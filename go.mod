@@ -1,4 +1,4 @@
-module github.com/RiemaLabs/Nuport/v1
+module github.com/RiemaLabs/Nuport
 
 go 1.21.1
 

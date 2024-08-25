@@ -1,0 +1,31 @@
+{
+  "name": "nuport-contracts",
+  "version": "3.0.0",
+  "description": "Nubit -> EVM bridge",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "forge test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RiemaLabs/Nuport.git"
+  },
+  "keywords": [
+    "nuport"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/RiemaLabs/Nuport/issues"
+  },
+  "homepage": "https://github.com/RiemaLabs/Nuport#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "hardhat": "^2.17.4",
+    "hardhat-preprocessor": "^0.1.5"
+  }
+}

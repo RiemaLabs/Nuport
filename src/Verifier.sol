@@ -14,6 +14,14 @@ contract Verifier {
         return DAVerifier.verifySharesToDataRootTupleRoot(_bridge, _sharesProof);
     }
 
+    function getEncode(IDAOracle _bridge, SharesProof memory _sharesProof)
+        external
+        pure
+        returns (bytes memory)
+    {
+        return abi.encode(_bridge, _sharesProof);
+    }
+
     function binaryMerkleTree_verify(SharesProof memory _sharesProof, bytes32 root)
         external
         pure

@@ -57,7 +57,7 @@ library BinaryMerkleTree {
         }
 
         // A sibling at height 1 is created by getting the hash of the data to prove.
-        bytes32 digest = leafDigest(data);
+        bytes32 digest = leafDigestB(data);
 
         // Null proof is only valid if numLeaves = 1
         // If so, just verify hash(data) is root
@@ -85,7 +85,7 @@ library BinaryMerkleTree {
     {
         bytes32[] memory nodes = new bytes32[](data.length);
         for (uint256 i = 0; i < data.length; i++) {
-            nodes[i] = leafDigest(data[i]);
+            nodes[i] = leafDigestB(data[i]);
         }
 
         return verifyMultiHashes(root, proof, nodes);
@@ -113,7 +113,7 @@ library BinaryMerkleTree {
         (bytes32 rootHash, uint256 proofHead,,) =
             _computeRootMulti(proof, leafNodes, 0, proofRangeSubtreeEstimate, 0, 0);
         for (uint256 i = proofHead; i < proof.sideNodes.length; ++i) {
-            rootHash = nodeDigest(rootHash, proof.sideNodes[i]);
+            rootHash = nodeDigestB(rootHash, proof.sideNodes[i]);
         }
 
         return (rootHash == root);
@@ -160,7 +160,7 @@ library BinaryMerkleTree {
         if (rightIsNil == true) {
             return (left, newHeadProof, newHeadLeaves, false);
         }
-        bytes32 hash = nodeDigest(left, right);
+        bytes32 hash = nodeDigestB(left, right);
         return (hash, newHeadProof, newHeadLeaves, false);
     }
 
@@ -223,14 +223,14 @@ library BinaryMerkleTree {
             if (error != ErrorCodes.NoError) {
                 return (leafHash, error);
             }
-            return (nodeDigest(leftHash, sideNodes[sideNodes.length - 1]), ErrorCodes.NoError);
+            return (nodeDigestB(leftHash, sideNodes[sideNodes.length - 1]), ErrorCodes.NoError);
         }
         bytes32 rightHash;
         (rightHash, error) = computeRootHash(key - numLeft, numLeaves - numLeft, leafHash, sideNodesLeft);
         if (error != ErrorCodes.NoError) {
             return (leafHash, error);
         }
-        return (nodeDigest(sideNodes[sideNodes.length - 1], rightHash), ErrorCodes.NoError);
+        return (nodeDigestB(sideNodes[sideNodes.length - 1], rightHash), ErrorCodes.NoError);
     }
 
     /// @notice creates a slice of bytes32 from the data slice of bytes32 containing the elements

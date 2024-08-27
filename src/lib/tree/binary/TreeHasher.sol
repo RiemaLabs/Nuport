@@ -8,7 +8,7 @@ import "../Constants.sol";
 /// @param right The right child.
 /// @return digest The node digest.
 // solhint-disable-next-line func-visibility
-function nodeDigest(bytes32 left, bytes32 right) pure returns (bytes32 digest) {
+function nodeDigestB(bytes32 left, bytes32 right) pure returns (bytes32 digest) {
     digest = sha256(abi.encodePacked(Constants.NODE_PREFIX, left, right));
 }
 
@@ -16,6 +16,6 @@ function nodeDigest(bytes32 left, bytes32 right) pure returns (bytes32 digest) {
 /// @param data The data of the leaf.
 /// @return digest The leaf digest.
 // solhint-disable-next-line func-visibility
-function leafDigest(bytes memory data) pure returns (bytes32 digest) {
+function leafDigestB(bytes memory data) pure returns (bytes32 digest) {
     digest = sha256(abi.encodePacked(Constants.LEAF_PREFIX, data));
 }

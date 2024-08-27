@@ -1,6 +1,6 @@
 {
   "name": "nuport-contracts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Nubit -> EVM bridge",
   "main": "index.js",
   "directories": {
